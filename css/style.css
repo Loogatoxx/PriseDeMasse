@@ -1,0 +1,235 @@
+/* Thème sombre unique : l'appli sert surtout tôt le matin et le soir */
+:root {
+  --fond: #0f1115;
+  --carte: #1a1d24;
+  --bord: #2a2f3a;
+  --texte: #e8eaf0;
+  --discret: #9aa3b2;
+  --accent: #ff8a3d;
+  --accent-fonce: #3a2414;
+  --second: #4fd1c5;
+  --succes: #5ad17a;
+  --rayon: 14px;
+  --barre-bas: calc(64px + env(safe-area-inset-bottom));
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--fond);
+  color: var(--texte);
+  font: 16px/1.45 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  padding-bottom: calc(var(--barre-bas) + 72px);
+}
+
+#entete {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background: var(--fond);
+  padding: calc(12px + env(safe-area-inset-top)) 16px 8px;
+}
+
+h1 { margin: 0; font-size: 26px; }
+h2 { font-size: 18px; margin: 20px 0 8px; }
+h2 small { display: block; font-size: 13px; font-weight: normal; color: var(--discret); }
+h3 { margin: 0 0 6px; font-size: 17px; }
+
+#contenu { padding: 0 16px; max-width: 640px; margin: 0 auto; }
+
+.carte {
+  background: var(--carte);
+  border: 1px solid var(--bord);
+  border-radius: var(--rayon);
+  padding: 14px;
+  margin: 12px 0;
+}
+
+.carte header { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+
+.discret, .vide { color: var(--discret); font-size: 14px; }
+.vide { margin: 8px 0; }
+
+.bandeau {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  background: var(--accent-fonce);
+  border-radius: var(--rayon);
+  padding: 10px 14px;
+  margin: 4px 0 8px;
+}
+.bandeau span { color: var(--discret); font-size: 14px; }
+
+/* ---------- Formulaires ---------- */
+
+input, select, button { font: inherit; color: inherit; }
+
+input[type="number"], input[type="date"], select {
+  width: 100%;
+  background: var(--fond);
+  border: 1px solid var(--bord);
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-size: 17px; /* 16 px minimum : sinon l'iPhone zoome sur le champ */
+}
+
+input:focus, select:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+
+.formulaire { display: flex; flex-direction: column; gap: 12px; }
+.formulaire label { display: flex; flex-direction: column; gap: 4px; font-size: 14px; color: var(--discret); }
+.formulaire label.choix, label.choix { flex-direction: row; align-items: center; gap: 8px; color: var(--texte); font-size: 16px; }
+
+fieldset { border: 1px solid var(--bord); border-radius: 10px; padding: 8px 12px; display: flex; flex-direction: column; gap: 6px; }
+legend { font-size: 14px; color: var(--discret); padding: 0 4px; }
+
+.en-ligne { display: flex; gap: 8px; margin: 8px 0; }
+.en-ligne input { flex: 1; }
+.en-ligne button { width: auto; flex: none; margin: 0; }
+
+.ligne-choix { display: flex; flex-direction: column; gap: 8px; margin-bottom: 8px; }
+
+button, .bouton {
+  display: block;
+  width: 100%;
+  border: 0;
+  border-radius: 12px;
+  padding: 13px 16px;
+  font-weight: 600;
+  text-align: center;
+  cursor: pointer;
+  margin: 10px 0;
+}
+.principal { background: var(--accent); color: #1b0f06; }
+.secondaire { background: var(--bord); color: var(--texte); }
+button:disabled { opacity: 0.6; }
+.lien { display: inline; width: auto; background: none; padding: 0; margin: 0; color: var(--discret); font-weight: normal; font-size: 13px; text-decoration: underline; }
+
+/* Champ fichier invisible mais toujours activable par son libellé (plus sûr que display:none sur iPhone) */
+.cache { position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
+
+/* ---------- Séance ---------- */
+
+.superset > h2 { margin-top: 22px; }
+.echauffement summary { font-weight: 600; cursor: pointer; }
+.echauffement ul { margin: 8px 0 0; padding-left: 18px; color: var(--discret); font-size: 15px; }
+.test { border-color: var(--accent); }
+.test p { margin: 6px 0 0; }
+.option summary { font-size: 18px; font-weight: 600; margin: 22px 0 8px; cursor: pointer; }
+
+.exo select.variante { margin: 8px 0 4px; }
+.consigne { font-size: 14px; color: var(--discret); margin: 6px 0; }
+.suggestion { font-size: 15px; margin: 8px 0; padding: 8px 10px; border-left: 3px solid var(--second); background: rgba(79, 209, 197, 0.08); border-radius: 6px; }
+.suggestion.monter { border-left-color: var(--succes); background: rgba(90, 209, 122, 0.12); }
+
+.charge { display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--discret); margin: 8px 0; }
+.charge input { width: 100px; }
+
+.tours { display: grid; grid-template-columns: repeat(auto-fit, minmax(92px, 1fr)); gap: 8px; margin-top: 8px; }
+.tour { display: flex; flex-direction: column; gap: 4px; font-size: 13px; color: var(--discret); position: relative; }
+.tour input { text-align: center; font-size: 20px; font-weight: 600; padding: 10px 4px; }
+.tour input::placeholder { color: #566072; font-weight: 400; }
+.tour .unite { position: absolute; right: 8px; bottom: 13px; font-size: 12px; pointer-events: none; }
+
+#repos {
+  position: fixed;
+  left: 16px;
+  right: 16px;
+  bottom: calc(var(--barre-bas) + 10px);
+  width: auto;
+  max-width: 608px;
+  margin: 0 auto;
+  z-index: 3;
+  background: var(--bord);
+  color: var(--texte);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+}
+#repos.actif { background: var(--second); color: #062421; }
+#repos.fini { background: var(--succes); color: #062410; }
+#repos[hidden] { display: none; }
+
+.bravo { border-color: var(--succes); }
+.bravo h2 { margin-top: 0; }
+.records, .detail { padding-left: 18px; margin: 6px 0; }
+.records li { color: var(--succes); font-weight: 600; }
+
+/* ---------- Progrès ---------- */
+
+.barres { display: flex; gap: 6px; align-items: flex-end; height: 110px; margin-top: 8px; }
+.barre { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; position: relative; }
+.barre span { width: 100%; background: var(--bord); border-radius: 6px 6px 0 0; min-height: 2px; }
+.barre.atteint span { background: var(--accent); }
+.barre small { color: var(--discret); font-size: 11px; margin-top: 4px; }
+.barre b { position: absolute; top: 0; font-size: 12px; }
+
+.liste-records { list-style: none; padding: 0; margin: 6px 0; }
+.liste-records li { display: flex; justify-content: space-between; gap: 12px; padding: 8px 0; border-bottom: 1px solid var(--bord); font-size: 15px; }
+.liste-records li:last-child { border-bottom: 0; }
+
+/* ---------- Graphiques ---------- */
+
+.graphique { width: 100%; height: auto; display: block; margin-top: 8px; }
+.graphique .axe { fill: var(--discret); font-size: 10px; }
+.graphique .grille { stroke: var(--bord); stroke-width: 1; }
+.graphique .objectif { stroke: var(--succes); stroke-width: 1; stroke-dasharray: 4 4; }
+.graphique .objectif-texte { fill: var(--succes); }
+.graphique polyline { fill: none; stroke-width: 2; stroke-linejoin: round; }
+.graphique polyline.principale { stroke: var(--accent); }
+.graphique circle.principale { fill: var(--accent); }
+.graphique circle.pesee { fill: var(--discret); opacity: 0.7; }
+.graphique polyline.moyenne { stroke: var(--second); stroke-width: 2.5; }
+
+.legende { font-size: 13px; color: var(--discret); display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.pastille { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-left: 6px; }
+.pastille.pesee { background: var(--discret); }
+.pastille.moyenne { background: var(--second); }
+
+/* ---------- Corps ---------- */
+
+.chiffres { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin: 12px 0 8px; text-align: center; }
+.chiffres b { display: block; font-size: 19px; }
+.chiffres small { color: var(--discret); font-size: 12px; }
+
+.jauge { height: 10px; background: var(--bord); border-radius: 5px; overflow: hidden; margin-top: 4px; }
+.jauge span { display: block; height: 100%; background: linear-gradient(90deg, var(--accent), var(--succes)); }
+
+.galerie { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 10px; }
+.galerie figure, .comparaison figure { margin: 0; }
+.galerie img, .comparaison img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; border-radius: 8px; display: block; }
+figcaption { font-size: 12px; color: var(--discret); margin-top: 2px; }
+.comparaison { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 10px; }
+
+/* ---------- Barre d'onglets ---------- */
+
+#onglets {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 4;
+  height: var(--barre-bas);
+  padding-bottom: env(safe-area-inset-bottom);
+  display: flex;
+  background: #14171d;
+  border-top: 1px solid var(--bord);
+}
+#onglets[hidden] { display: none; }
+#onglets button {
+  flex: 1;
+  margin: 0;
+  padding: 8px 0 6px;
+  background: none;
+  border-radius: 0;
+  color: var(--discret);
+  font-size: 12px;
+  font-weight: 500;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+#onglets button.actif { color: var(--accent); }
+#onglets svg { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }

@@ -1,0 +1,13 @@
+# Fichiers système
+.DS_Store
+
+# Secrets : jamais suivis par git (la clé d'API de la phase 3 restera dans les réglages du téléphone)
+.env
+*.env
+
+# Éditeurs
+.vscode/
+.idea/
+
+# Réglages locaux de Claude Code
+.claude/settings.local.json
